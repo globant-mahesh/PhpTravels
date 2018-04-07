@@ -26,11 +26,15 @@ import static org.hamcrest.Matchers.containsString;
 //@Test(groups = {"default-group"})
 public class TestNgFactoryRunner extends TestNgBase {
 
-    HomePage home;
-    WebDriver stDriver;
-    EventFiringWebDriver driver;
-    Logger logger;
-    String location;
+    private HomePage home;
+    private WebDriver stDriver;
+    private EventFiringWebDriver driver;
+    private Logger logger;
+    private String location;
+
+    public TestNgFactoryRunner() {
+
+    }
 
     public TestNgFactoryRunner(String location) {
         this.location = location;
@@ -105,6 +109,9 @@ public class TestNgFactoryRunner extends TestNgBase {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        driver.close();
+    //Closes all browser windows and safely ends the session useful for single test run
+        driver.quit();
+    //Close the browser window that the driver has focus on useful for parallel test run
+    //driver.close();
     }
 }

@@ -40,6 +40,7 @@ public class DataProviderFactory {
             LinkedHashSet<String> rowSet = new LinkedHashSet();
             for (int j = 0; j<cellNum; j++) {
                 XSSFCell cl = rw.getCell(j);
+//                cell value is return in type Object. Convert it to the string.
                 rowSet.add(String.valueOf(cl));
             }
             tableSet.add(rowSet);
@@ -48,6 +49,7 @@ public class DataProviderFactory {
         Iterator<LinkedHashSet<String>> itr = tableSet.iterator();
         for (int i = 0; itr.hasNext(); i++) {
             LinkedHashSet<String> lhs = itr.next();
+//            convert set to Array
             o[i] = lhs.toArray();
         }
 //        System.out.println(tableSet);
